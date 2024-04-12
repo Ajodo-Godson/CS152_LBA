@@ -71,13 +71,22 @@ restaurant('Xinh') :- cuisine(vietnamese), distance(far), price(moderate), spicy
 %%%% Add in your askables here %%%%
 cuisine(X):- menuask(cuisine, X, [korean, vietnamese, german, turkish, iraq_kurdish, indian, italian, peruvian, mexican]).
 distance(X):- menuask(distance, X, [close, midrange, far]).
-price(X) :- ask(price, X).
+price(X) :- menuask(price, X, [cheap, moderate, expensive]).
 spicy(X) :- ask(spicy, X).
-time(X) :- ask(time, X).
-dietary(X) :- menuask(dietary, X, [halal, vegan, pescovegetarian]).
+time(X) :- menuask(time, X, [breakfast, lunch, dinner]).
+dietary(X) :- ask(dietary, X).
 takeaway(X) :- ask(takeaway, X).
 card(X) :- ask(card, X).
-rating(X) :- ask(rating, X).
+rating(X) :- menuask(rating, X, [low, moderate, high]).
+
+
+
+
+
+
+
+
+
 
 % Asking clauses for yes/no questions
 
@@ -126,3 +135,18 @@ check_val(X, A, V, MenuList) :-
  write_py(X), write_py(' is not a legal value, try again.'), nl,
  menuask(A, V, MenuList).
 
+% DCG rules for constructing questions
+question(cuisine) --> ["What cuisine are you in the mood for?"].
+question(distance) --> ["How far are you willing to travel for your meal?"].
+question(price) --> ["What is your budget for the meal?"].
+question(spicy) --> ["Do you prefer spicy food?"].
+question(dietary) --> ["Do you prefer vegan food?"].
+question(time) --> ["What time are you planning to have the meal?"].
+question(takeaway) --> ["Are you looking for a takeaway option?"].
+question(card) --> ["Do you need a place that accepts cards?"].
+question(rating) --> ["What rating do you want the restaurant to be?"].
+
+% Predicate to generate question text using DCG
+generate_question(Attribute, QuestionText) :-
+    phrase(question(Attribute), QuestionList),
+    atomic_list_concat(QuestionList, ' ', QuestionText).

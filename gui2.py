@@ -85,12 +85,18 @@ QTextEdit {
 
     def setupProlog(self):
         self.prolog = Prolog()
-        self.prolog.consult('kb.pl')
+        self.prolog.consult('kb.pl') 
         registerForeign(self.read_py, arity=3)
         registerForeign(self.read_py_menu, arity=3)
         registerForeign(self.write_py, arity=1)
         self.retractall = Functor("retractall")
         self.known = Functor("known", 3)
+
+        self.questions_dict = {}
+        self.attributes = ["cuisine", "distance", "price", "spicy", "dietary", "time", "takeaway", "card", "rating"]
+        for attribute in self.attributes:
+            question = list(self.prolog.query(f"generate_question('{attribute}', Question)"))[0]["Question"]
+            self.questions_dict[attribute] = question
 
     def queryGenerator(self):
         call(self.retractall(self.known))
@@ -137,8 +143,8 @@ QTextEdit {
         '''
         self.chatWindow.append(bubble)
 
-    def write_py(message: Atom, query_handle) -> bool:
-        # Assuming message is an Atom, convert to string and handle it
+    @staticmethod
+    def write_py(message: Atom) -> bool:
         if isinstance(message, Atom):
             text = str(message)
             print(f"Prolog says: {text}")  # Or update the GUI
@@ -149,31 +155,34 @@ QTextEdit {
     def read_py(self, A: Atom, V: Atom, Y: Variable) -> bool:
         if isinstance(Y, Variable):
             title = 'Query Input'
-            question = f'{A} {V}? (yes/no)'
+            question = self.questions_dict[str(A)]
             self.system_response(question)
             response, ok = QInputDialog.getText(self, title, question)
             if ok:
-
                 self.user_response(response)
-                formatted_response = response.strip().lower() == 'yes'
-                Y.unify('yes' if formatted_response else 'no')
-                #self.user_response(response)
-                return True
+                formatted_response = response.strip().lower()
+                if formatted_response in ['yes', 'no']:
+                    Y.unify(formatted_response)
+                    return True
+                else:
+                    self.system_response("Please answer 'yes' or 'no'.")
         return False
+
 
 
     def read_py_menu(self, A: Atom, Y: Variable, MenuList: list) -> bool:
         if isinstance(Y, Variable):
             items = [str(x) for x in MenuList]
-            question = f"Select an option: {str(A)}"
+            attribute = str(A)
+            question = self.questions_dict.get(attribute, f"Select an option for {attribute}:")
             self.system_response(question)
-            response, ok = QInputDialog.getItem(self, "Select an option", str(A), items, 0, False)
+            response, ok = QInputDialog.getItem(self, "Select an option", question, items, 0, False)
             if ok:
                 self.user_response(response)
                 Y.unify(str(response))
-                
                 return True
         return False
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
