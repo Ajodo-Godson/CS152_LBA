@@ -1,0 +1,4 @@
+venv/
+.DS_Store # MacOS folder view options file
+venv/
+.DS_Store
