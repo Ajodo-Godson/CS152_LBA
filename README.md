@@ -87,4 +87,4 @@ cd CS152_LBA
 
   Run the gui2.py again -> It should be working now.
 
-[Demo](Resources/Ocakbasi.mp4)
+![Demo Animation](Resources/Demo.gif)
