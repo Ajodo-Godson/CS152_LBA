@@ -99,7 +99,7 @@ QTextEdit {
         self.known = Functor("known", 3)
 
         self.questions_dict = {}
-        self.attributes = ["preference", "cuisine", "distance", "price", "spicy", "dietary", "time", "takeaway", "card", "rating"]
+        self.attributes =  ["cuisine", "distance", "price", "spicy", "dietary", "time", "takeaway", "card", "rating"]
         for attribute in self.attributes:
             question = list(self.prolog.query(f"generate_question('{attribute}', Question)"))[0]["Question"]
             self.questions_dict[attribute] = question
@@ -111,9 +111,9 @@ QTextEdit {
         query = "restaurant(X)."
         response = [answer for answer in self.prolog.query(query, maxresult=1)]
         if response:
-            self.system_response(f"Recommended Restaurant: {response[0]['X']}")
+            self.system_response(f"The restaurant we recommend is {response[0]['X']}")
         else:
-            self.system_response("No restaurant recommendation found.")
+            self.system_response("A restaurant with these specifications does not exist.")
     def system_response(self, response):
         bubble = f'''
         <div style="
@@ -166,22 +166,18 @@ QTextEdit {
             self.system_response(question)
             response, ok = QInputDialog.getText(self, title, question)
             
-            if not ok: 
-                #return False
-                sys.exit(app.exec_())
-
-            if ok:
-                self.user_response(response)
-                formatted_response = response.strip().lower()
-                if formatted_response in ['yes', 'no']:
-                    Y.unify(formatted_response)
-                    return True
+            while True:
+                if ok:
+                    self.user_response(response)
+                    formatted_response = response.strip().lower()
+                    if formatted_response in ['yes', 'no']:
+                        Y.unify(formatted_response)
+                        return True
+                    else:
+                        self.system_response("Please answer 'yes' or 'no'.")
                 else:
-                    self.system_response("Please answer 'yes' or 'no'.")
+                    return False
         return False
-
-
-
 
     def read_py_menu(self, A: Atom, Y: Variable, MenuList: list) -> bool:
         if isinstance(Y, Variable):
@@ -200,9 +196,7 @@ QTextEdit {
                 Y.unify(str(response))
                 return True
         return False
-
-
-
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     rest = Restaurant()
