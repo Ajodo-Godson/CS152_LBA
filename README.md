@@ -19,6 +19,26 @@ cd CS152_LBA
 #### Installing Dependencies:
 
 1. **Python Dependencies:**
+   You can create a virtual environment to run the application by running the following command:
+
+   ```
+   python -m venv venv
+   ```
+
+   This will create a virtual environment in the `venv` folder.
+   Activate the virtual environment by running the following command:
+   **macOS**
+
+   ```
+   source venv/bin/activate
+   ```
+
+   **windows**
+
+   ```
+   venv\Scripts\activate
+   ```
+
    Navigate to the project directory where `requirements.txt` is located and run the following command to install the required Python packages:
 
    **macOS and Windows:**
@@ -54,7 +74,7 @@ cd CS152_LBA
 
 - If you encounter an error with the pyswip's prolog.py module, navigate to 'venv/lib/python3.9/site-packages/pyswip/core.py' and change `PL_version = \_lib.PL_version ` to ` PL_version = \_lib.PL_version_info` and save. This should resolve the issue on both Mac and Windows.
 
-- If you encounter an error like "FATAL ERROR: System Resouorces not found" or something similar, get the bin path of your SWI-PROLOG.
+- If you encounter an error like "FATAL ERROR: System Resources not found" or something similar, get the bin path of your SWI-PROLOG.
   It's usually: "C:\\Program Files\\swipl\\bin". Get the bin path of your SWI-PROLOG and add it to your PATH environment variable.
   In the gui2.py, add these lines before importing the libraries:
 
