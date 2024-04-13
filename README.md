@@ -75,14 +75,14 @@ cd CS152_LBA
 - If you encounter an error with the pyswip's prolog.py module, navigate to 'venv/lib/python3.9/site-packages/pyswip/core.py' and change `PL_version = \_lib.PL_version ` to ` PL_version = \_lib.PL_version_info` and save. This should resolve the issue on both Mac and Windows.
 
 - If you encounter an error like "FATAL ERROR: System Resources not found" or something similar, get the bin path of your SWI-PROLOG.
-  It's usually: "C:\\Program Files\\swipl\\bin". Get the bin path of your SWI-PROLOG and add it to your PATH environment variable.
+  It's usually: "C:\\Program Files\\swipl\\bin". Add it to your PATH environment variable.
   In the gui2.py, add these lines before importing the libraries:
 
   ```
   import os
   os.environ['SWI_HOME_DIR'] = "C:\\Program Files\\swipl"
 
-  \\Then your other imports
+  \\Then other imports and codes
   ```
 
   Run the gui2.py again -> It should be working now.
