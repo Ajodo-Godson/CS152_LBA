@@ -99,7 +99,7 @@ QTextEdit {
         self.known = Functor("known", 3)
 
         self.questions_dict = {}
-        self.attributes = ["cuisine", "distance", "price", "spicy", "dietary", "time", "takeaway", "card", "rating"]
+        self.attributes = ["preference", "cuisine", "distance", "price", "spicy", "dietary", "time", "takeaway", "card", "rating"]
         for attribute in self.attributes:
             question = list(self.prolog.query(f"generate_question('{attribute}', Question)"))[0]["Question"]
             self.questions_dict[attribute] = question
