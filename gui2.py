@@ -41,6 +41,7 @@ QPushButton {
     background-color: #333333;
     color: white;
     
+                           
     margin: auto;
     font-size: 20px;
     font-weight: bold;
@@ -104,6 +105,8 @@ QTextEdit {
             self.questions_dict[attribute] = question
 
     def queryGenerator(self):
+
+        self.chatWindow.clear()
         call(self.retractall(self.known))
         query = "restaurant(X)."
         response = [answer for answer in self.prolog.query(query, maxresult=1)]
@@ -111,7 +114,6 @@ QTextEdit {
             self.system_response(f"Recommended Restaurant: {response[0]['X']}")
         else:
             self.system_response("No restaurant recommendation found.")
-
     def system_response(self, response):
         bubble = f'''
         <div style="
@@ -163,6 +165,11 @@ QTextEdit {
             question = self.questions_dict[str(A)]
             self.system_response(question)
             response, ok = QInputDialog.getText(self, title, question)
+            
+            if not ok: 
+                #return False
+                sys.exit(app.exec_())
+
             if ok:
                 self.user_response(response)
                 formatted_response = response.strip().lower()
@@ -175,6 +182,7 @@ QTextEdit {
 
 
 
+
     def read_py_menu(self, A: Atom, Y: Variable, MenuList: list) -> bool:
         if isinstance(Y, Variable):
             items = [str(x) for x in MenuList]
@@ -182,11 +190,17 @@ QTextEdit {
             question = self.questions_dict.get(attribute, f"Select an option for {attribute}:")
             self.system_response(question)
             response, ok = QInputDialog.getItem(self, "Select an option", question, items, 0, False)
+
+            if not ok: 
+                #return False
+                sys.exit(app.exec_())
+
             if ok:
                 self.user_response(response)
                 Y.unify(str(response))
                 return True
         return False
+
 
 
 if __name__ == '__main__':
