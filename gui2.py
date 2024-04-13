@@ -14,6 +14,8 @@ class Restaurant(QWidget):
     
     def initUI(self):
         self.setGeometry(100, 100, 820, 600)  # Window size
+        
+        
         self.setWindowTitle('Restaurant Recommendation System')
 
         # Global stylesheet for the application
@@ -38,6 +40,8 @@ QLineEdit:focus {
 QPushButton {
     background-color: #333333;
     color: white;
+    
+    margin: auto;
     font-size: 20px;
     font-weight: bold;
     border-radius: 3px;
@@ -61,27 +65,28 @@ QTextEdit {
 """)
 
 
+            # Setup the layout
         self.layout = QVBoxLayout()
         self.layout.setSpacing(10)
 
+        # Chat window setup
         self.chatWindow = QTextEdit(self)
-        self.chatWindow.setFixedSize(800, 500)
+        # Removed fixed size for adaptive resizing
         self.chatWindow.setReadOnly(True)
         self.chatWindow.setAlignment(Qt.AlignTop | Qt.AlignLeft)
 
-
-
-        font = QFont("Arial", 12, QFont.Bold)
-
+        # Button setup
         self.button = QPushButton('Start', self)
-        self.button.setFixedSize(800, 88)
+        font = QFont("Arial", 12, QFont.Bold)
         self.button.setFont(font)
         self.button.clicked.connect(self.queryGenerator)
+        # Removed fixed size for adaptive resizing
 
-        self.layout.addWidget(self.chatWindow)
-        self.layout.addWidget(self.button)
+        # Adding widgets to layout with stretch factors
+        self.layout.addWidget(self.chatWindow, 1)  # Adding stretch factor for adaptive resizing
+        self.layout.addWidget(self.button)  # No stretch factor needed here
+
         self.setLayout(self.layout)
-
 
     def setupProlog(self):
         self.prolog = Prolog()
