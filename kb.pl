@@ -4,87 +4,201 @@
 % Enter your KB below this line:
 %%%% Add in your rules here %%%
 
-restaurant('Punjab') :- cuisine(indian).
+% Preferece = none:
+restaurant('Chikogi') :- preference(none), cuisine(korean), time(lunch); preference(none), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(none), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(none), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(none), cuisine(vietnamese), time(breakfast); preference(none), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(none), cuisine(vietnamese), time(dinner).
+restaurant('Zaki’s Pizza') :- preference(none), cuisine(italian).
+restaurant('Chicha') :- preference(none), cuisine(peruvian).
+restaurant('Mishba') :- preference(none), cuisine(mexican).
+restaurant('Punjab') :- preference(none), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(none), cuisine(german), time(lunch), price(cheap), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(none), cuisine(german), time(lunch), price(cheap), distance(close), rating(moderate); preference(none), cuisine(german), time(dinner), price(cheap), distance(close), rating(moderate).
+restaurant('Wurstpate') :- preference(none), cuisine(german), time(lunch), price(cheap), distance(close), rating(high); preference(none), cuisine(german), time(dinner), price(cheap), distance(close), rating(high).
+restaurant('3 sisters') :- preference(none), cuisine(german), time(lunch), price(moderate), distance(close); preference(none), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(none), cuisine(german), time(lunch), price(moderate), distance(far), rating(high), takeaway(available); preference(none), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(none), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(none), cuisine(german), time(lunch), price(moderate), distance(far), rating(moderate); preference(none), cuisine(german), time(dinner), price(moderate), distance(far), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(none), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(none), cuisine(german), time(dinner), price(moderate), distance(midrange).
+restaurant('Doner Box') :- preference(none), cuisine(turkish), time(lunch), price(cheap), distance(close).
+restaurant('Doyum Restuarant') :- preference(none), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(none), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(none), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), card(accepted).
+restaurant('Ocakbasi') :- preference(none), cuisine(turkish), time(lunch), price(moderate), rating(low); preference(none), cuisine(turkish), time(dinner), price(moderate), rating(low).
+restaurant('Keke Kebap') :- preference(none), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(none), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(none), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(none), cuisine(turkish), time(breakfast), price(moderate), rating(moderate); preference(none), cuisine(turkish), time(lunch), price(moderate), rating(moderate); preference(none), cuisine(turkish), time(diner), price(moderate), rating(moderate).
+restaurant('Meliz Palast') :- preference(none), cuisine(turkish), time(lunch), price(cheap), distance(midrange), dietary(vegan); preference(none), cuisine(turkish), time(dinner), price(cheap), distance(midrange), dietary(vegan).
 
-restaurant('Fes') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(lunch), \+takeaway(available), card(accepted), rating(high).
-restaurant('Fes') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(dinner), \+takeaway(available), card(accepted), rating(high).
+% Preference = distance:
+restaurant('Chikogi') :- preference(distance), distance(close), cuisine(korean), time(lunch); preference(distance), distance(close), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(distance), distance(close), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(distance), distance(close), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(distance), distance(far), cuisine(vietnamese), time(breakfast); preference(distance), distance(far), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(distance), distance(far), cuisine(vietnamese), time(dinner).
+restaurant('Zaki Pizza') :- preference(distance), distance(midrange), cuisine(italian).
+restaurant('Chicha') :- preference(distance), distance(midrange), cuisine(peruvian).
+restaurant('Mishba') :- preference(distance), distance(midrange), cuisine(mexican).
+restaurant('Punjab') :- preference(distance), distance(midrange), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(distance), distance(midrange), cuisine(german), time(lunch), price(cheap).
+restaurant('Gaststatte Berliner Wappen') :- preference(distance), distance(close), cuisine(german), time(lunch), price(cheap), rating(moderate); preference(distance), distance(close), cuisine(german), time(dinner), price(cheap), rating(moderate).
+restaurant('Wurstpate') :- preference(distance), distance(close), cuisine(german), time(lunch), price(cheap), rating(high); preference(distance),  distance(close), cuisine(german), time(dinner), price(cheap), rating(high).
+restaurant('3 sisters') :- preference(distance), distance(close), cuisine(german), time(lunch), price(moderate); preference(distance), distance(close), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(distance), distance(far), cuisine(german), time(lunch), price(moderate), rating(high), takeaway(available); preference(distance), distance(far), cuisine(german), time(dinner), price(moderate), rating(high), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(distance), distance(far), cuisine(german), time(dinner), price(moderate), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(distance), distance(far), cuisine(german), time(lunch), price(moderate), rating(moderate); preference(distance), distance(far), cuisine(german), time(dinner), price(moderate), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(distance), distance(close), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(distance), distance(midrange), cuisine(german), time(dinner), price(moderate).
+restaurant('Doner Box') :- preference(distance), distance(close), cuisine(turkish), time(lunch), price(cheap).
+restaurant('Doyum Restuarant') :- preference(distance), distance(midrange), cuisine(turkish), time(breakfast), price(cheap), \+dietary(vegan), card(accepted); preference(distance), distance(midrange), cuisine(turkish), time(lunch), price(cheap), \+dietary(vegan), card(accepted); preference(distance), distance(midrange), cuisine(turkish), time(dinner), price(cheap), \+dietary(vegan), card(accepted).
+restaurant('Ocakbasi') :- preference(distance), distance(midrange), cuisine(turkish), time(lunch), price(moderate), rating(low); preference(distance), distance(midrange), cuisine(turkish), time(dinner), price(moderate), rating(low).
+restaurant('Keke Kebap') :- preference(distance), distance(midrange), cuisine(turkish), time(breakfast), price(cheap), \+dietary(vegan), \+card(accepted); preference(distance), distance(midrange), cuisine(turkish), time(lunch), price(cheap), \+dietary(vegan), \+card(accepted); preference(distance), distance(midrange), cuisine(turkish), time(dinner), price(cheap), \+dietary(vegan), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(distance), distance(midrange), cuisine(turkish), time(breakfast), price(moderate), rating(moderate); preference(distance), distance(midrange), cuisine(turkish), time(lunch), price(moderate), rating(moderate); preference(distance), distance(midrange), cuisine(turkish), time(diner), price(moderate), rating(moderate).
+restaurant('Meliz Palast') :- preference(distance), distance(midrange), cuisine(turkish), time(lunch), price(cheap),dietary(vegan); preference(distance), cuisine(turkish), time(dinner), price(cheap), distance(midrange), dietary(vegan).
 
-restaurant('Meliz Palast') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(lunch), \+takeaway(available), card(accepted), rating(moderate).
-restaurant('Meliz Palast') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(dinner), \+takeaway(available), card(accepted), rating(moderate).
+% Preference = price:
+restaurant('Chikogi') :- preference(price), price(moderate), cuisine(korean), time(lunch); preference(price), price(moderate), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(price), price(moderate), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(price), price(cheap), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(price), price(moderate), cuisine(vietnamese), time(breakfast); preference(price), price(moderate), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(price), price(moderate), cuisine(vietnamese), time(dinner).
+restaurant('Zaki’s Pizza') :- preference(price), price(moderate), cuisine(italian).
+restaurant('Chicha') :- preference(price), price(moderate), cuisine(peruvian).
+restaurant('Mishba') :- preference(price), price(moderate), cuisine(mexican).
+restaurant('Punjab') :- preference(price), price(moderate), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(price), price(cheap), cuisine(german), time(lunch), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(price), price(cheap), cuisine(german), time(lunch), distance(close), rating(moderate); preference(price), price(cheap), cuisine(german), time(dinner), distance(close), rating(moderate).
+restaurant('Wurstpate') :- preference(price), price(cheap), cuisine(german), time(lunch), distance(close), rating(high); preference(price), price(cheap), cuisine(german), time(dinner), distance(close), rating(high).
+restaurant('3 sisters') :- preference(price), price(moderate), cuisine(german), time(lunch), distance(close); preference(price), price(moderate), cuisine(german), time(dinner), distance(close).
+restaurant('Forsters') :- preference(price), price(moderate), cuisine(german), time(lunch), distance(far), rating(high), takeaway(available); preference(price), price(moderate), cuisine(german), time(dinner), distance(far), rating(high), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(price), price(moderate), cuisine(german), time(dinner), distance(far), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(price), price(moderate), cuisine(german), time(lunch), distance(far), rating(moderate); preference(price), price(moderate), cuisine(german), time(dinner), distance(far), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(price), price(expensive), cuisine(german), time(dinner).
+restaurant('Obermaier') :- preference(price), price(moderate), cuisine(german), time(dinner), distance(midrange).
+restaurant('Doner Box') :- preference(price), price(cheap), cuisine(turkish), time(lunch), distance(close).
+restaurant('Doyum Restuarant') :- preference(price), price(cheap), cuisine(turkish), time(breakfast), distance(midrange), \+dietary(vegan), card(accepted); preference(price), price(cheap), cuisine(turkish), time(lunch), distance(midrange), \+dietary(vegan), card(accepted); preference(price), price(cheap), cuisine(turkish), time(dinner), distance(midrange), \+dietary(vegan), card(accepted).
+restaurant('Ocakbasi') :- preference(price), price(moderate), cuisine(turkish), time(lunch), rating(low); preference(price), price(moderate), cuisine(turkish), time(dinner), rating(low).
+restaurant('Keke Kebap') :- preference(price), price(cheap), cuisine(turkish), time(breakfast), distance(midrange), \+dietary(vegan), \+card(accepted); preference(price), price(cheap), cuisine(turkish), time(lunch), distance(midrange), \+dietary(vegan), \+card(accepted); preference(price), price(cheap), cuisine(turkish), time(dinner), distance(midrange), \+dietary(vegan), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(price), price(moderate), cuisine(turkish), time(breakfast), rating(moderate); preference(price), price(moderate), cuisine(turkish), time(lunch), rating(moderate); preference(price), price(moderate), cuisine(turkish), time(diner), rating(moderate).
+restaurant('Meliz Palast') :- preference(price), price(cheap), cuisine(turkish), time(lunch), distance(midrange), dietary(vegan); preference(price), price(cheap), cuisine(turkish), time(dinner), distance(midrange), dietary(vegan).
 
-restaurant('Simitdchi Cafe') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(lunch), \+takeaway(available), card(accepted), rating(low).
-restaurant('Simitdchi Cafe') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(dinner), \+takeaway(available), card(accepted), rating(low).
+% Preference = dietary:
+restaurant('Chikogi') :- preference(dietary), \+dietary(vegan), cuisine(korean), time(lunch); preference(dietary), \+dietary(vegan), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(dietary), \+dietary(vegan), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(dietary), dietary(vegan), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(dietary), \+dietary(vegan), cuisine(vietnamese), time(breakfast); preference(dietary), \+dietary(vegan), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(dietary), \+dietary(vegan), cuisine(vietnamese), time(dinner).
+restaurant('Zaki’s Pizza') :- preference(dietary), \+dietary(vegan), cuisine(italian).
+restaurant('Chicha') :- preference(dietary), \+dietary(vegan), cuisine(peruvian).
+restaurant('Mishba') :- preference(dietary), dietary(vegan), cuisine(mexican).
+restaurant('Punjab') :- preference(dietary), \+dietary(vegan), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(dietary), \+dietary(vegan), cuisine(german), time(lunch), price(cheap), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(dietary), \+dietary(vegan), cuisine(german), time(lunch), price(cheap), distance(close), rating(moderate); preference(dietary), \+dietary(vegan), cuisine(german), time(dinner), price(cheap), distance(close), rating(moderate).
+restaurant('Wurstpate') :- preference(dietary), \+dietary(vegan), cuisine(german), time(lunch), price(cheap), distance(close), rating(high); preference(dietary), \+dietary(vegan), cuisine(german), time(dinner), price(cheap), distance(close), rating(high).
+restaurant('3 sisters') :- preference(dietary), dietary(vegan), cuisine(german), time(lunch), price(moderate), distance(close); preference(dietary), dietary(vegan), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(dietary), dietary(vegan), cuisine(german), time(lunch), price(moderate), distance(far), rating(high), takeaway(available); preference(dietary), dietary(vegan), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(dietary), dietary(vegan), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(dietary), \+dietary(vegan), cuisine(german), time(lunch), price(moderate), distance(far), rating(moderate); preference(dietary), \+dietary(vegan), cuisine(german), time(dinner), price(moderate), distance(far), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(dietary), \+dietary(vegan), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(dietary), dietary(vegan), cuisine(german), time(dinner), price(moderate), distance(midrange).
+restaurant('Doner Box') :- preference(dietary), \+dietary(vegan), cuisine(turkish), time(lunch), price(cheap), distance(close).
+restaurant('Doyum Restuarant') :- preference(dietary), \+dietary(vegan), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), card(accepted); preference(dietary), \+dietary(vegan), cuisine(turkish), time(lunch), price(cheap), distance(midrange), card(accepted); preference(dietary), \+dietary(vegan), cuisine(turkish), time(dinner), price(cheap), distance(midrange), card(accepted).
+restaurant('Ocakbasi') :- preference(dietary), \+dietary(vegan), cuisine(turkish), time(lunch), price(moderate), rating(low); preference(dietary), \+dietary(vegan), cuisine(turkish), time(dinner), price(moderate), rating(low).
+restaurant('Keke Kebap') :- preference(dietary), \+dietary(vegan), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+card(accepted); preference(dietary), \+dietary(vegan), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+card(accepted); preference(dietary), \+dietary(vegan), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(dietary), dietary(vegan), cuisine(turkish), time(breakfast), price(moderate), rating(moderate); preference(dietary), dietary(vegan), cuisine(turkish), time(lunch), price(moderate), rating(moderate); preference(dietary), dietary(vegan), cuisine(turkish), time(diner), price(moderate), rating(moderate).
+restaurant('Meliz Palast') :- preference(dietary), dietary(vegan), cuisine(turkish), time(lunch), price(cheap), distance(midrange); preference(dietary), dietary(vegan), cuisine(turkish), time(dinner), price(cheap), distance(midrange).
 
-restaurant('Keke Kebap') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(lunch), takeaway(available), \+card(accepted).
-restaurant('Keke Kebap') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(dinner), takeaway(available), \+card(accepted).
+% Preference = rating:
+restaurant('Chikogi') :- preference(rating), rating(high), cuisine(korean), time(lunch); preference(rating), rating(), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(rating), rating(high), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(rating), rating(high), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(rating), rating(high), cuisine(vietnamese), time(breakfast); preference(rating), rating(), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(rating), rating(high), cuisine(vietnamese), time(dinner).
+restaurant('Zaki’s Pizza') :- preference(rating), rating(high), cuisine(italian).
+restaurant('Chicha') :- preference(rating), rating(high), cuisine(peruvian).
+restaurant('Mishba') :- preference(rating), rating(high), cuisine(mexican).
+restaurant('Punjab') :- preference(rating), rating(high), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(rating), rating(high), cuisine(german), time(lunch), price(cheap), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(rating), rating(moderate), cuisine(german), time(lunch), price(cheap), distance(close); preference(rating), rating(moderate), cuisine(german), time(dinner), price(cheap), distance(close).
+restaurant('Wurstpate') :- preference(rating), rating(high), cuisine(german), time(lunch), price(cheap), distance(close); preference(rating), rating(high), cuisine(german), time(dinner), price(cheap), distance(close).
+restaurant('3 sisters') :- preference(rating), rating(moderate), cuisine(german), time(lunch), price(moderate), distance(close); preference(rating), rating(moderate), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(rating), rating(high), cuisine(german), time(lunch), price(moderate), distance(far), takeaway(available); preference(rating), rating(high), cuisine(german), time(dinner), price(moderate), distance(far), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(rating), rating(high), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(rating), rating(moderate), cuisine(german), time(lunch), price(moderate), distance(far); preference(rating), rating(moderate), cuisine(german), time(dinner), price(moderate), distance(far).
+restaurant('Rotisserie Weingrun') :- preference(rating), rating(high), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(rating), rating(high), cuisine(german), time(dinner), price(moderate), distance(midrange).
+restaurant('Doner Box') :- preference(rating), rating(high), cuisine(turkish), time(lunch), price(cheap), distance(close).
+restaurant('Doyum Restuarant') :- preference(rating), rating(high), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(rating), rating(high), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(rating), rating(high), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), card(accepted).
+restaurant('Ocakbasi') :- preference(rating), rating(low), cuisine(turkish), time(lunch), price(moderate); preference(rating), rating(low), cuisine(turkish), time(dinner), price(moderate).
+restaurant('Keke Kebap') :- preference(rating), rating(high), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(rating), rating(high), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(rating), rating(high), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(rating), rating(moderate), cuisine(turkish), time(breakfast), price(moderate); preference(rating), rating(moderate), cuisine(turkish), time(lunch), price(moderate); preference(rating), rating(moderate), cuisine(turkish), time(diner), price(moderate).
+restaurant('Meliz Palast') :- preference(rating), rating(moderate), cuisine(turkish), time(lunch), price(cheap), distance(midrange), dietary(vegan); preference(rating), rating(moderate), cuisine(turkish), time(dinner), price(cheap), distance(midrange), dietary(vegan).
 
-restaurant('Ocakbasi') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(lunch), takeaway(available), card(accepted).
-restaurant('Ocakbasi') :- cuisine(turkish), distance(midrange), price(moderate), \+spicy(tolerated), \+dietary(vegan), time(dinner), takeaway(available), card(accepted).
+% Preference = takeaway:
+restaurant('Chikogi') :- preference(takeaway), takeaway(available), cuisine(korean), time(lunch); preference(takeaway), takeaway(available), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(takeaway), takeaway(available), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(takeaway), takeaway(available), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(takeaway), takeaway(available), cuisine(vietnamese), time(breakfast); preference(takeaway), takeaway(available), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(takeaway), takeaway(available), cuisine(vietnamese), time(dinner).
+restaurant('Zaki’s Pizza') :- preference(takeaway), takeaway(available), cuisine(italian).
+restaurant('Chicha') :- preference(takeaway), \+takeaway(available), cuisine(peruvian).
+restaurant('Mishba') :- preference(takeaway), \+takeaway(available), cuisine(mexican).
+restaurant('Punjab') :- preference(takeaway), takeaway(available), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(takeaway), takeaway(available), cuisine(german), time(lunch), price(cheap), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(takeaway), takeaway(available), cuisine(german), time(lunch), price(cheap), distance(close), rating(moderate); preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(cheap), distance(close), rating(moderate).
+restaurant('Wurstpate') :- preference(takeaway), takeaway(available), cuisine(german), time(lunch), price(cheap), distance(close), rating(high); preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(cheap), distance(close), rating(high).
+restaurant('3 sisters') :- preference(takeaway), \+takeaway(available), cuisine(german), time(lunch), price(moderate), distance(close); preference(takeaway), \+takeaway(available), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(takeaway), takeaway(available), cuisine(german), time(lunch), price(moderate), distance(far), rating(high); preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(moderate), distance(far), rating(high).
+restaurant('Maultaschen Manufaktur') :- preference(takeaway), \+takeaway(available), cuisine(german), time(dinner), price(moderate), distance(far), rating(high).
+restaurant('Schwarzwaldstuben') :- preference(takeaway), takeaway(available), cuisine(german), time(lunch), price(moderate), distance(far), rating(moderate); preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(moderate), distance(far), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(takeaway), takeaway(available), cuisine(german), time(dinner), price(moderate), distance(midrange).
+restaurant('Doner Box') :- preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(cheap), distance(close).
+restaurant('Doyum Restuarant') :- preference(takeaway), takeaway(available), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), card(accepted); preference(takeaway), takeaway(available), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), card(accepted).
+restaurant('Ocakbasi') :- preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(moderate), rating(low); preference(takeaway), takeaway(available), cuisine(turkish), time(dinner), price(moderate), rating(low).
+restaurant('Keke Kebap') :- preference(takeaway), takeaway(available), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted); preference(takeaway), takeaway(available), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan), \+card(accepted).
+restaurant('Simitdchi Cafe') :- preference(takeaway), takeaway(available), cuisine(turkish), time(breakfast), price(moderate), rating(moderate); preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(moderate), rating(moderate); preference(takeaway), takeaway(available), cuisine(turkish), time(diner), price(moderate), rating(moderate).
+restaurant('Meliz Palast') :- preference(takeaway), takeaway(available), cuisine(turkish), time(lunch), price(cheap), distance(midrange), dietary(vegan); preference(takeaway), takeaway(available), cuisine(turkish), time(dinner), price(cheap), distance(midrange), dietary(vegan).
 
-restaurant('Doner box') :- cuisine(turkish), distance(close), price(cheap), time(lunch), dietary(halal), takeaway(available), rating(high).
-restaurant('Doner box') :- cuisine(turkish), distance(close), price(cheap), time(dinner), dietary(halal), takeaway(available), rating(high).
+% Preference = payment:
+restaurant('Chikogi') :- preference(payment), card(accepted), cuisine(korean), time(lunch); preference(payment), card(accepted), cuisine(korean), time(dinner), \+spicy(tolerated).
+restaurant('Kimchi Princess') :- preference(payment), card(accepted), cuisine(korean), time(diner).
+restaurant('Lasan') :- preference(payment), card(accepted), cuisine(iraqi).
+restaurant('SuBoclub') :- preference(payment), card(accepted), cuisine(vietnamese), time(breakfast); preference(payment), card(accepted), cuisine(vietanamese), time(lunch).
+restaurant('Xinh Xinh') :- preference(payment), card(accepted), cuisine(vietnamese), time(dinner).
+restaurant('Zaki Pizza') :- preference(payment), \+card(accepted), cuisine(italian).
+restaurant('Chicha') :- preference(payment), \+card(accepted), cuisine(peruvian).
+restaurant('Mishba') :- preference(payment), card(accepted), cuisine(mexican).
+restaurant('Punjab') :- preference(payment), card(accepted), cuisine(indian).
+restaurant('Heisser Hobel') :- preference(payment), \+card(accepted), cuisine(german), time(lunch), price(cheap), distance(midrange).
+restaurant('Gaststatte Berliner Wappen') :- preference(payment), card(accepted), cuisine(german), time(lunch), price(cheap), distance(close), rating(moderate); preference(payment), card(accepted), cuisine(german), time(dinner), price(cheap), distance(close), rating(moderate).
+restaurant('Wurstpate') :- preference(payment), \+card(accepted), cuisine(german), time(lunch), price(cheap), distance(close), rating(high); preference(card), \+card(accepted), cuisine(german), time(dinner), price(cheap), distance(close), rating(high).
+restaurant('3 sisters') :- preference(payment), card(accepted), cuisine(german), time(lunch), price(moderate), distance(close); preference(payment), card(accepted), cuisine(german), time(dinner), price(moderate), distance(close).
+restaurant('Forsters') :- preference(payment), card(accepted), cuisine(german), time(lunch), price(moderate), distance(far), rating(high), takeaway(available); preference(payment), card(accepted), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), takeaway(available).
+restaurant('Maultaschen Manufaktur') :- preference(payment), card(accepted), cuisine(german), time(dinner), price(moderate), distance(far), rating(high), \+takeaway(available).
+restaurant('Schwarzwaldstuben') :- preference(payment), card(accepted), cuisine(german), time(lunch), price(moderate), distance(far), rating(moderate); preference(payment), card(accepted), cuisine(german), time(dinner), price(moderate), distance(far), rating(moderate).
+restaurant('Rotisserie Weingrun') :- preference(payment), card(accepted), cuisine(german), time(dinner), price(expensive).
+restaurant('Obermaier') :- preference(payment), card(accepted), cuisine(german), time(dinner), price(moderate), distance(midrange).
+restaurant('Doner Box') :- preference(payment), \+card(accepted), cuisine(turkish), time(lunch), price(cheap), distance(close).
+restaurant('Doyum Restuarant') :- preference(payment), card(accepted), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan); preference(payment), card(accepted), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan); preference(payment), card(accepted), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan).
+restaurant('Ocakbasi') :- preference(payment), card(accepted), cuisine(turkish), time(lunch), price(moderate), rating(low); preference(card), card(accepted), cuisine(turkish), time(dinner), price(moderate), rating(low).
+restaurant('Keke Kebap') :- preference(payment), \+card(accepted), cuisine(turkish), time(breakfast), price(cheap), distance(midrange), \+dietary(vegan); preference(card), \+card(accepted), cuisine(turkish), time(lunch), price(cheap), distance(midrange), \+dietary(vegan); preference(card), \+card(accepted), cuisine(turkish), time(dinner), price(cheap), distance(midrange), \+dietary(vegan).
+restaurant('Simitdchi Cafe') :- preference(payment), card(accepted), cuisine(turkish), time(breakfast), price(moderate), rating(moderate); preference(payment), card(accepted), cuisine(turkish), time(lunch), price(moderate), rating(moderate); preference(payment), card(accepted), cuisine(turkish), time(diner), price(moderate), rating(moderate).
+restaurant('Meliz Palast') :- preference(payment), \+card(accepted), cuisine(turkish), time(lunch), price(cheap), distance(midrange), dietary(vegan); preference(payment), \+card(accepted), cuisine(turkish), time(dinner), price(cheap), distance(midrange), dietary(vegan).
 
-restaurant('Doyum') :- cuisine(turkish), distance(midrange), price(cheap), dietary(halal), time(breakfast), takeaway(available), card(accepted), rating(high).
-restaurant('Doyum') :- cuisine(turkish), distance(midrange), price(cheap), dietary(halal), time(lunch), takeaway(available), card(accepted), rating(high).
-restaurant('Doyum') :- cuisine(turkish), distance(midrange), price(cheap), dietary(halal), time(dinner), takeaway(available), card(accepted), rating(high).
-
-restaurant('Kimchi Princess') :- cuisine(korean), distance(close), price(cheap), spicy(tolerated).
-
-restaurant('Chikogi') :- cuisine(korean), distance(close), price(cheap), \+spicy(tolerated).
-
-restaurant('Lasan') :- cuisine(iraq_kurdish), distance(close), price(cheap), dietary(halal), time(breakfast), takeaway(available), card(accepted), rating(moderate).
-restaurant('Lasan') :- cuisine(iraq_kurdish), distance(close), price(cheap), dietary(halal), time(lunch), takeaway(available), card(accepted), rating(moderate).
-restaurant('Lasan') :- cuisine(iraq_kurdish), distance(close), price(cheap), dietary(halal), time(dinner), takeaway(available), card(accepted), rating(moderate).
-
-restaurant('Schwarzwaldstuben') :- cuisine(german), distance(far), price(moderate), \+spicy(tolerated), \+dietary(vegan).
-
-restaurant('Fosters') :- cuisine(german), distance(far), price(moderate), \+spicy(tolerated), dietary(vegan).
-
-restaurant('Obermaier') :- cuisine(german), distance(midrange), price(cheap), \+spicy(tolerated), \+dietary(vegan), time(dinner).
-
-restaurant('Heisser Hobel') :- cuisine(german), distance(midrange), price(cheap), \+spicy(tolerated), \+dietary(vegan), time(breakfast).
-restaurant('Heisser Hobel') :- cuisine(german), distance(midrange), price(cheap), \+spicy(tolerated), \+dietary(vegan), time(lunch).
-
-restaurant('Rotisserie Weingrun') :- cuisine(german), distance(close), price(expensive).
-
-restaurant('3 Sisters') :- cuisine(german), distance(close), price(moderate).
-
-restaurant('Wurstpate') :- cuisine(german), distance(close), price(cheap).
-
-restaurant('Gaststatte') :- cuisine(german), distance(close), price(cheap), time(lunch), card(accepted), takeaway(available), rating(moderate).
-restaurant('Gaststatte') :- cuisine(german), distance(close), price(cheap), time(dinner), card(accepted), takeaway(available), rating(moderate).
-
-restaurant('Suboclub'):- cuisine(vietnamese), distance(far), time(lunch), card(accepted), takeaway(available), rating(high).
-restaurant('Suboclub'):- cuisine(vietnamese), distance(far), time(dinner), card(accepted), takeaway(available), rating(high).
-
-restaurant('Punjab') :- cuisine(indian), distance(midrange), price(cheap), spicy(tolerated), time(lunch), takeaway(available), rating(moderate).
-
-restaurant('Zakis') :- cuisine(italian), distance(midrange), price(moderate), time(lunch), takeaway(available), rating(moderate).
-
-restaurant('Chicha') :- cuisine(peruvian), distance(midrange), price(expensive), dietary(pescovegetarian), time(dinner), card(accepted), rating(moderate).
-
-restaurant('Mishba') :- cuisine(mexican), distance(midrange), price(cheap), spicy(tolerated), time(lunch), card(accepted), rating(moderate).
-
-restaurant('Xinh') :- cuisine(vietnamese), distance(far), price(moderate), spicy(tolerated), time(lunch), takeaway(available), card(accepted), rating(high).
 
 % The code below implements the prompting to ask the user:
 %%%% Add in your askables here %%%%
-cuisine(X):- menuask(cuisine, X, [korean, vietnamese, german, turkish, iraq_kurdish, indian, italian, peruvian, mexican]).
+preference(X) :- menuask(preference, X, [distance, price, dietary, rating, takeaway, payment, none]).
+cuisine(X):- menuask(cuisine, X, [korean, italian, german, turkish, vietnamese, iraqi, peruvian, mexican, indian]).
 distance(X):- menuask(distance, X, [close, midrange, far]).
 price(X) :- menuask(price, X, [cheap, moderate, expensive]).
 spicy(X) :- ask(spicy, X).
-time(X) :- menuask(time, X, [breakfast, lunch, dinner]).
 dietary(X) :- ask(dietary, X).
+time(X) :- menuask(time, X, [breakfast, lunch, dinner]).
 takeaway(X) :- ask(takeaway, X).
 card(X) :- ask(card, X).
 rating(X) :- menuask(rating, X, [low, moderate, high]).
-
-
-
-
-
-
-
 
 
 
